@@ -18,7 +18,7 @@ Utilize SME past data to map customer queries to request categories.
 Clean the data for consistent processing and storage. The text should be normalized by lowercasing,
 removing stopwords and applying lemmatization for grouping together different forms of the same word.
 Finally the clean data should be tokenized for mapping and rule-matching with the corresponding customer support team.
-Create detailed taxonomy of issue types with the following sample mapping structure
+    Create detailed taxonomy of issue types with the following sample mapping structure
         SUPPORT_CATEGORIES = {
             'order_tracking': {
                 'keywords': ['track', 'shipping', 'delivery', 'order status'],
