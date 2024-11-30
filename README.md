@@ -100,7 +100,7 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
 ## QUESTIONS:
 ### What technologies would you use? 
 - **Backend**: Python 
-- **ML Framework**: scikit-learn, spaCy
+- **ML Framework**: scikit-learn, spaCy, PyTorch
 - **Integration**: Jira REST API - Python libraries
 - **Deployment**: Microservice Architecute: Docker (for containerization of each component), Kubernetes (for scalable orchestration)
 
