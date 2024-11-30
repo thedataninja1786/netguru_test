@@ -12,7 +12,7 @@
 -   Normalize data into a common format, such as JSON, with fields like:
     - Channel: Email/Live chat
     - Message content: The text body of the message
-    - Customer details: Name, email, order ID
+    - Customer details: Name, email, customer ID, order ID
 
 
 ## 2. DATA PROCESSING 
@@ -39,12 +39,12 @@ Create detailed categorization of issue types with the following sample mapping 
 ### SME-defined rules to map requests to the corresponding support team
 Implement a rule-based classifier that assigns the incoming (processed) query to a category.
 Enhance classification robustness by using word embeddings to identify keywords semantically similar to the query.
-The classifier can take a tuple of (embedding,query) -> prediction. This approach ensures O(1) runtime complexity, enabling high processing efficiency. 
+The classifier can take a tuple of (embedding,query) -> prediction. This approach ensures O(1) runtime complexity on inference, enabling high processing efficiency. 
 When the dataset grows large enough, convert to an ensemble of models, combining a stochastic (ML) and deterministic approach, and vote on the predictions.
 
 ## 4. SME FEEDBACK LOOP
-A fedback loop mechanism for tracking missclassifications and continous improvment of the framework.
-The SMEs review flagged messages and adjust rules accordingly.
+A fedback loop mechanism for tracking missclassifications and edge cases, providing continous improvment of the framework.
+The SMEs review flagged messages and adjust the rules accordingly.
 
 ## 5-6. JIRA TICKET GENERATION AND INTEGRATION
 Generate tickets using predefined templates with dynamic fields populated by customer-specific data. Assign priority and support team based on classification. 
@@ -66,7 +66,7 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
 ## FLOWCHART
     +--------------------------------------------------------+
     |              INPUT CHANNELS INGESTION                  | ---------- ► +---------------------------+
-    |  Ingest and aggregate data from available channhels    |        ~ ~ ~ | HISTORICAL DATA / STORAGE |
+    |  Ingest and aggregate data from available channels     |        ~ ~ ~ | HISTORICAL DATA / STORAGE |
     |           (email, live chat, etc.)                     |       |      +---------------------------+
     +--------------------------------------------------------+       |
                             |          | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |      
@@ -78,16 +78,16 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
                             |                                                                |
                             ▼                                                                ▼
         +-----------------------------------------+                      +-----------------------------------------+
-        |           RULE - BASED CLASSIFIER       |                      |             WORD EMBEDDINGS             |
+        |           RULE-BASED CLASSIFIER         |                      |             WORD EMBEDDINGS             |
         |  SME-defined rules, regex patterns,     | ◄ ------------------ |  Entities that resemble the user-query  |
         |     machine learning predictions        |                      +-----------------------------------------+
         +-----------------------------------------+                                 
                             |     ▲             
-                            ▼     |--------------------------------|       +---------------------------------------+
-    +--------------------------------------------------------+     |       |          SME FEEDBACK LOOP            |
-    |                  TICKET GENERATION                     |     |---- ► |  SME reviews flagged messages and     |
-    | (Predefined templates + dynamic fields like order ID)  |             |      adjust rules accordingly         |
-    +--------------------------------------------------------+             +---------------------------------------+
+                            ▼     |--------------------------------|       +--------------------------------------+
+    +--------------------------------------------------------+     |       |          SME FEEDBACK LOOP           |
+    |                  TICKET GENERATION                     |     |---- ► |  SME reviews flagged messages and    |
+    | (Predefined templates + dynamic fields like order ID)  |             |      adjust rules accordingly        |
+    +--------------------------------------------------------+             +--------------------------------------+
                             |
                             ▼
         +-------------------------------------------+
