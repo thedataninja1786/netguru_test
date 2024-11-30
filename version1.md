@@ -115,6 +115,7 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
 - Incorporate a load balancer to evenly distribute incoming traffic across the microservices preventing bottlenecks during peak usage
 
 ### What questions would you ask the buisiness partner
-- A list of supported channels, expected (and current) resolution time 
+- A list of supported channels, along with their expected (and current) resolution time 
 - Past data for how SMEs handle cases, and how they dealt with more ambigous requests
-- What does the current infrastructure look like and what is the allocated budget for the project, and if there are any preffered technologies
+- What does the current infrastructure look like and what is the allocated budget and timeline for the project
+- Are there are any preffered technologies that the project should be based on
