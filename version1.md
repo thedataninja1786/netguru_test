@@ -1,4 +1,4 @@
-# Detailed System Design: SME-Guided Customer Support Classification
+# System Design: SME-Guided Customer Support Classification
 
 ## 1. Input Channels Aggregator
 ### Technical Implementation
@@ -16,7 +16,6 @@
   3. Document decision trees and classification logic
 
 ### Keyword Mapping Structure
-```python
 SUPPORT_CATEGORIES = {
     'order_tracking': {
         'keywords': ['track', 'shipping', 'delivery', 'order status'],
@@ -30,3 +29,33 @@ SUPPORT_CATEGORIES = {
     },
     # Additional categories...
 }
+
+
+            +---------------------------+
+            | Request Intake Module     |
+            | (email, live chat, etc.)  |
+            +---------------------------+
+                        |
+                        v
+    +---------------------------------------------------+
+    |                Preprocessing Module               |
+    | (Text cleaning, tokenization, normalization, etc.)|
+    +---------------------------------------------------+
+                        |
+                        v
+        +-----------------------------------------+
+        |           Rule-Based Classifier         |
+        |  (SME-defined rules, regex patterns)    |
+        +-----------------------------------------+
+                        |
+                        v
+        +------------------------------------------------------------+
+        |                          Ticket Generator                  |
+        | (Predefined templates + dynamic fields like order ID)      |
+        +------------------------------------------------------------+
+                        |
+                        v
+    +-------------------------------------------+
+    |           Jira Integration Layer          |
+    | (Push tickets via Jira REST API)          |
+    +-------------------------------------------+
