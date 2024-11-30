@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/62c5ba01-e918-4658-8e4c-cebb8cb325dd" alt="Netguru-layoffs-logo" width="650"/>
+  <img src="https://github.com/user-attachments/assets/62c5ba01-e918-4658-8e4c-cebb8cb325dd" alt="Netguru-layoffs-logo" width="750"/>
 </p>
 
 # System Design: SME-Guided Customer Support Classification
 
 ## 1. INPUT CHANNELS INGESTION 
-### Use APIs or connectors to gather incoming requests
+### Utilize APIs or other connectors to gather incoming requests
 -   Integration Protocols:
     - Email: IMAP/SMTP with OAuth authentication
     - Live Chat: WebSocket/REST API integration
@@ -16,7 +16,6 @@
 
 
 ## 2. DATA PROCESSING 
-### Knowledge Capture Strategy
 Utilize SME past data to map customer queries to request categories.
 Clean and normalize the data by applying lowercase conversion, stopword removal, and lemmatization to unify variations of the same word.
 Finally the clean data should be tokenized for mapping and rule-matching with the corresponding customer support team.
@@ -48,7 +47,6 @@ A fedback loop mechanism for tracking missclassifications and continous improvme
 The SMEs review flagged messages and adjust rules accordingly.
 
 ## 5-6. JIRA TICKET GENERATION AND INTEGRATION
-### Technical Implementation
 Generate tickets using predefined templates with dynamic fields populated by customer-specific data. Assign priority and support team based on classification. 
 Integrate with support systems like Jira via REST API to ensure tickets contain all necessary information for resolution.
 
@@ -73,23 +71,23 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
     +--------------------------------------------------------+       |
                             |          | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |      
                             ▼          ▼
-        +---------------------------------------------------+  ------------------------------------|
-        |                DATA PROCESSING                    |                                      |
-        | (Text cleaning, tokenization, normalization, etc.)|                                      |
-        +---------------------------------------------------+                                      |
-                            |                                                                      |
-                            ▼                                                                      ▼
-        +-----------------------------------------+                            +-----------------------------------------+
-        |           RULE - BASED CLASSIFIER       |                            |             WORD EMBEDDINGS             |
-        |  SME-defined rules, regex patterns,     | ◄ ------------------------ |  Entities that resemble the user-query  |
-        |     machine learning predictions        |                            +-----------------------------------------+
+        +---------------------------------------------------+  --------------------------------|
+        |                DATA PROCESSING                    |                                  |
+        | (Text cleaning, tokenization, normalization, etc.)|                                  |
+        +---------------------------------------------------+                                  |
+                            |                                                                  |
+                            ▼                                                                  ▼
+        +-----------------------------------------+                        +-----------------------------------------+
+        |           RULE - BASED CLASSIFIER       |                        |             WORD EMBEDDINGS             |
+        |  SME-defined rules, regex patterns,     | ◄ -------------------- |  Entities that resemble the user-query  |
+        |     machine learning predictions        |                        +-----------------------------------------+
         +-----------------------------------------+                                 
                             |     ▲             
-                            ▼     |-----------------------------------|       +-----------------------------------------+
-    +---------------------------------------------------------+       |       |          SME FEEDBACK LOOP              |
-    |                  TICKET GENERATION                      |       |---- ► |    SME reviews flagged messages and     |
-    | (Predefined templates + dynamic fields like order ID)   |               |        adjust rules accordingly         |
-    +---------------------------------------------------------+               +-----------------------------------------+
+                            ▼     |---------------------------------|       +----------------------------------------+
+    +--------------------------------------------------------+      |       |           SME FEEDBACK LOOP            |
+    |                  TICKET GENERATION                     |      |---- ► |   SME reviews flagged messages and     |
+    | (Predefined templates + dynamic fields like order ID)  |              |       adjust rules accordingly         |
+    +--------------------------------------------------------+              +----------------------------------------+
                             |
                             ▼
         +-------------------------------------------+
