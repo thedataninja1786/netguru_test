@@ -1,6 +1,6 @@
 # System Design: SME-Guided Customer Support Classification
 
-## 1. Input Channels Aggregator
+## 1. INPUT CHANNELS INGESTION 
 ### Technical Implementation
 - **Integration Protocols**:
   - Email: IMAP/SMTP with OAuth authentication
@@ -12,27 +12,28 @@
     - Customer details: Name, email, order ID
 
 
-## 2. DATA PREPROCESSING 
+## 2. DATA PROCESSING 
 ### Knowledge Capture Strategy
 Utilize SME past data to map customer queries to request categories.
-  2. Create detailed taxonomy of issue types
+Clean the data for consistent processing and storage. The text should be normalized by lowercasing,
+removing stopwords and applying lemmatization for grouping together different forms of the same word.
+Finally the clean data should be tokenized for mapping and rule-matching.
 
-
-### Keyword Mapping Structure
-SUPPORT_CATEGORIES = {
-    'order_tracking': {
-        'keywords': ['track', 'shipping', 'delivery', 'order status'],
-        'priority': 2,
-        'team': 'logistics'
-    },
-    'payment_errors': {
-        'keywords': ['payment', 'charge', 'declined', 'refund'],
-        'priority': 3,
-        'team': 'finance'
-    },
-    # Additional categories...
-}
-
+    Create detailed taxonomy of issue types with the following mapping structure
+        SUPPORT_CATEGORIES = {
+            'order_tracking': {
+                'keywords': ['track', 'shipping', 'delivery', 'order status'],
+                'priority': 2,
+                'team': 'logistics'
+            },
+            'payment_errors': {
+                'keywords': ['payment', 'charge', 'declined', 'refund'],
+                'priority': 3,
+                'team': 'finance'
+            },
+            # Additional categories...
+        }
+## 3. RULE-BASED CLASSIFIER
 
 ## Flowchart
     +--------------------------------------------------------+
@@ -43,7 +44,7 @@ SUPPORT_CATEGORIES = {
                             |
                             V
         +---------------------------------------------------+  -----------------------------------------
-        |                DATA PREPROCESSING                 |                                           |
+        |                DATA PROCESSING                    |                                           |
         | (Text cleaning, tokenization, normalization, etc.)|                                           |
         +---------------------------------------------------+                                           |
                             |                                                                           |
