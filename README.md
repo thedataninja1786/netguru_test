@@ -69,9 +69,9 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
     |  Ingest and aggregate data from available channels     |        ~ ~ ~ | HISTORICAL DATA / STORAGE |
     |           (email, live chat, etc.)                     |       |      +---------------------------+
     +--------------------------------------------------------+       |
-                            |          | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |      
-                            ▼          ▼
-        +---------------------------------------------------+  ------------------------------|
+                            |        | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |      
+                            ▼        ▼
+        +---------------------------------------------------+ -------------------------------|
         |                DATA PROCESSING                    |                                |
         | (Text cleaning, tokenization, normalization, etc.)|                                |
         +---------------------------------------------------+                                |
@@ -82,8 +82,8 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
         |  SME-defined rules, regex patterns,     | ◄ ------------------ |  Entities that resemble the user-query  |
         |     machine learning predictions        |                      +-----------------------------------------+
         +-----------------------------------------+                                 
-                            |     ▲             
-                            ▼     |--------------------------------|       +--------------------------------------+
+                            |    ▲             
+                            ▼    |---------------------------------|       +--------------------------------------+
     +--------------------------------------------------------+     |       |          SME FEEDBACK LOOP           |
     |                  TICKET GENERATION                     |     |---- ► |  SME reviews flagged messages and    |
     | (Predefined templates + dynamic fields like order ID)  |             |      adjust rules accordingly        |
