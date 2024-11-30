@@ -31,31 +31,32 @@ SUPPORT_CATEGORIES = {
 }
 
 
+## Flowchart
             +---------------------------+
             | Request Intake Module     |
             | (email, live chat, etc.)  |
             +---------------------------+
-                        |
-                        v
+                            |
+                            v
     +---------------------------------------------------+
     |                Preprocessing Module               |
     | (Text cleaning, tokenization, normalization, etc.)|
     +---------------------------------------------------+
-                        |
-                        v
+                            |
+                            v
         +-----------------------------------------+
         |           Rule-Based Classifier         |
         |  (SME-defined rules, regex patterns)    |
         +-----------------------------------------+
-                        |
-                        v
-        +------------------------------------------------------------+
-        |                          Ticket Generator                  |
-        | (Predefined templates + dynamic fields like order ID)      |
-        +------------------------------------------------------------+
-                        |
-                        v
-    +-------------------------------------------+
-    |           Jira Integration Layer          |
-    | (Push tickets via Jira REST API)          |
-    +-------------------------------------------+
+                            |
+                            v
+    +------------------------------------------------------------+
+    |                          Ticket Generator                  |
+    | (Predefined templates + dynamic fields like order ID)      |
+    +------------------------------------------------------------+
+                            |
+                            v
+        +-------------------------------------------+
+        |           Jira Integration Layer          |
+        | (Push tickets via Jira REST API)          |
+        +-------------------------------------------+
