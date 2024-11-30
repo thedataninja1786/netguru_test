@@ -1,10 +1,10 @@
 # System Design: SME-Guided Customer Support Classification
 
 ## 1. INPUT CHANNELS INGESTION 
-### Technical Implementation
-- **Integration Protocols**:
-  - Email: IMAP/SMTP with OAuth authentication
-  - Live Chat: WebSocket/REST API integration
+### Use APIs or connectors to gather incoming requests
+-   Integration Protocols:
+    - Email: IMAP/SMTP with OAuth authentication
+    - Live Chat: WebSocket/REST API integration
 -   Normalize data into a common format, such as JSON, with fields like:
     - Channel: Email/Live chat
     - Message content: The text body of the message
@@ -111,6 +111,8 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
 - Transition from rule-based methods to ML-based models as historical data accumulates
 - Expand support for multilingual queries and integrate additional communication channels
 - Introduce automated active learning pipelines to continuously refine classification rules with SME feedback
+- Add message queues to ensure robust data delivery during ingestion since the system handles multiple channels concurrently
+- Incorporate a load balancer to evenly distribute incoming traffic across the microservices preventing bottlenecks during peak usage
 
 ### What questions would you ask the buisiness partner
 - A list of supported channels, expected (and current) resolution time 
