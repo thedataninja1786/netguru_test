@@ -38,6 +38,7 @@ Create detailed taxonomy of issue types with the following sample mapping struct
 Implement a rule-based classifier that assigns the incoming (processed) query to a category.
 Enhance classification robustness by using word embeddings to identify keywords semantically similar to the query.
 The classifier can take a tuple of (embedding,query) -> prediction. This approach ensures O(1) runtime complexity, enabling high processing efficiency. 
+When the dataset grows large enough, convert to an ensemble of models, combining a stochastic (ML) and deterministic approach, and vote on the predictions.
 
 ## 4. SME FEEDBACK LOOP
 A fedback loop mechanism for tracking missclassifications and continous improvment of the framework.
@@ -61,32 +62,33 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
     }
     ```
 
+
 ## Flowchart
     +--------------------------------------------------------+
-    |              INPUT CHANNELS INGESTION                  |
-    |  Ingest and aggregate data from available channhels    |
-    |           (email, live chat, etc.)                     |
-    +--------------------------------------------------------+
-                            |
-                            ↓
+    |              INPUT CHANNELS INGESTION                  | -------► +---------------------------+
+    |  Ingest and aggregate data from available channhels    |        ~ | HISTORICAL DATA / STORAGE |
+    |           (email, live chat, etc.)                     |       |  +---------------------------+
+    +--------------------------------------------------------+       |
+                            |                  |~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~      
+                            ▼                  ▼
         +---------------------------------------------------+  -----------------------------------------
         |                DATA PROCESSING                    |                                           |
         | (Text cleaning, tokenization, normalization, etc.)|                                           |
         +---------------------------------------------------+                                           |
                             |                                                                           |
-                            ↓                                                                           ↓
+                            ▼                                                                           ▼
         +-----------------------------------------+                                 +-----------------------------------------+
-        |           RULE-BASED CLASSIFIER         |  ←----------------------------→ |             WORD EMBEDDINGS             |
-        |  SME-defined rules, regex patterns      |  ←----------------------------→ |  Entities that resemble the user-query  |
+        |           RULE-BASED CLASSIFIER         |  ◄----------------------------► |             WORD EMBEDDINGS             |
+        |  SME-defined rules, regex patterns      |  ◄----------------------------► |  Entities that resemble the user-query  |
         +-----------------------------------------+                                 +-----------------------------------------+
-                            |     ↑             
-                            ↓     |-----------------------------------------        +-----------------------------------------+
+                            |     ▲             
+                            ▼     |-----------------------------------------        +-----------------------------------------+
     +------------------------------------------------------------+          |       |          SME FEEDBACK LOOP              |
-    |                  TICKET GENERATION                         |           -----→ |    SME reviews flagged messages and     |
+    |                  TICKET GENERATION                         |           -----► |    SME reviews flagged messages and     |
     | (Predefined templates + dynamic fields like order ID)      |                  |        adjust rules accordingly         |
     +------------------------------------------------------------+                  +-----------------------------------------+
                             |
-                            ↓
+                            ▼
         +-------------------------------------------+
         |           JIRA INTEGRATION LAYER          |
         |    Deliver tickets via Jira REST API      |
