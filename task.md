@@ -78,9 +78,10 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
                             |                                                                           |
                             ▼                                                                           ▼
         +-----------------------------------------+                                 +-----------------------------------------+
-        |           RULE-BASED CLASSIFIER         | ◄ ----------------------------- |             WORD EMBEDDINGS             |
-        |  SME-defined rules, regex patterns      |                                 |  Entities that resemble the user-query  |
-        +-----------------------------------------+                                 +-----------------------------------------+
+        |           RULE - BASED CLASSIFIER       |                                 |             WORD EMBEDDINGS             |
+        |  SME-defined rules, regex patterns,     | ◄ ----------------------------- |  Entities that resemble the user-query  |
+        |     machine learning predictions        |                                 +-----------------------------------------+
+        +-----------------------------------------+                                 
                             |     ▲             
                             ▼     |-----------------------------------------|       +-----------------------------------------+
     +------------------------------------------------------------+          |       |          SME FEEDBACK LOOP              |
