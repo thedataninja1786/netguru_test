@@ -19,7 +19,7 @@
 Utilize SME past data to map customer queries to request categories.
 Clean and normalize the data by applying lowercase conversion, stopword removal, and lemmatization to unify variations of the same word.
 Finally the clean data should be tokenized for mapping and rule-matching with the corresponding customer support team.
-Create detailed taxonomy of issue types with the following sample mapping structure
+Create detailed categorization of issue types with the following sample mapping structure.
 
     SUPPORT_CATEGORIES = {
         "order_tracking": {
@@ -63,7 +63,7 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
     
 
 
-## Flowchart
+## FLOWCHART
     +--------------------------------------------------------+
     |              INPUT CHANNELS INGESTION                  | -------► +---------------------------+
     |  Ingest and aggregate data from available channhels    |        ~ | HISTORICAL DATA / STORAGE |
@@ -71,16 +71,16 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
     +--------------------------------------------------------+       |
                             |          | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |      
                             ▼          ▼
-        +---------------------------------------------------+  --------------------------------|
-        |                DATA PROCESSING                    |                                  |
-        | (Text cleaning, tokenization, normalization, etc.)|                                  |
-        +---------------------------------------------------+                                  |
-                            |                                                                  |
-                            ▼                                                                  ▼
-        +-----------------------------------------+                        +-----------------------------------------+
-        |           RULE - BASED CLASSIFIER       |                        |             WORD EMBEDDINGS             |
-        |  SME-defined rules, regex patterns,     | ◄ -------------------- |  Entities that resemble the user-query  |
-        |     machine learning predictions        |                        +-----------------------------------------+
+        +---------------------------------------------------+  ------------------------------|
+        |                DATA PROCESSING                    |                                |
+        | (Text cleaning, tokenization, normalization, etc.)|                                |
+        +---------------------------------------------------+                                |
+                            |                                                                |
+                            ▼                                                                ▼
+        +-----------------------------------------+                      +-----------------------------------------+
+        |           RULE - BASED CLASSIFIER       |                      |             WORD EMBEDDINGS             |
+        |  SME-defined rules, regex patterns,     | ◄ ------------------ |  Entities that resemble the user-query  |
+        |     machine learning predictions        |                      +-----------------------------------------+
         +-----------------------------------------+                                 
                             |     ▲             
                             ▼     |---------------------------------|       +----------------------------------------+
