@@ -69,8 +69,8 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
     |  Ingest and aggregate data from available channhels    |        ~ | HISTORICAL DATA / STORAGE |
     |           (email, live chat, etc.)                     |       |  +---------------------------+
     +--------------------------------------------------------+       |
-                            |              | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |      
-                            ▼              ▼
+                            |          | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |      
+                            ▼          ▼
         +---------------------------------------------------+  -----------------------------------------|
         |                DATA PROCESSING                    |                                           |
         | (Text cleaning, tokenization, normalization, etc.)|                                           |
