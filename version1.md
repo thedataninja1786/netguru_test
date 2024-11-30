@@ -5,10 +5,10 @@
 - **Integration Protocols**:
   - Email: IMAP/SMTP with OAuth authentication
   - Live Chat: WebSocket/REST API integration
-Normalize data into a common format, such as JSON, with fields like:
-- Channel: Email/Live chat
-- Message content: The text body of the message
-- Customer details: Name, email, order ID
+-   Normalize data into a common format, such as JSON, with fields like:
+        - Channel: Email/Live chat
+        - Message content: The text body of the message
+        - Customer details: Name, email, order ID
 
 
 ## 2. DATA PROCESSING 
