@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/62c5ba01-e918-4658-8e4c-cebb8cb325dd" alt="Netguru-layoffs-logo" width="790"/>
+  <img src="https://github.com/user-attachments/assets/62c5ba01-e918-4658-8e4c-cebb8cb325dd" alt="Netguru-layoffs-logo" width="825"/>
 </p>
 
 # System Design: SME-Guided Customer Support Classification
