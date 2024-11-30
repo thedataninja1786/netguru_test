@@ -22,7 +22,6 @@ Clean and normalize the data by applying lowercase conversion, stopword removal,
 Finally the clean data should be tokenized for mapping and rule-matching with the corresponding customer support team.
 Create detailed taxonomy of issue types with the following sample mapping structure
 
-    ```json
     SUPPORT_CATEGORIES = {
         "order_tracking": {
         "keywords": ["track", "shipping", "delivery", "order status"],
@@ -36,7 +35,7 @@ Create detailed taxonomy of issue types with the following sample mapping struct
         },
         # Additional categories...
     }
-    ```
+    
 ## 3. RULE-BASED CLASSIFIER
 ### SME-defined rules to map requests to the corresponding support team
 Implement a rule-based classifier that assigns the incoming (processed) query to a category.
@@ -53,52 +52,51 @@ The SMEs review flagged messages and adjust rules accordingly.
 Generate tickets using predefined templates with dynamic fields populated by customer-specific data. Assign priority and support team based on classification. 
 Integrate with support systems like Jira via REST API to ensure tickets contain all necessary information for resolution.
 
-    ```json
     {
         "template": "order_tracking",
         "fields": {
-            "customer_name": "Chris Solomou",
+            "customer_name": "Jon Doe",
             "order_id": "123456",
             "issue_description": "Customer wants to track their order status."
         },
         "priority": 2,
         "team": "logistics"
     }
-    ```
+    
 
 
 ## Flowchart
-    +--------------------------------------------------------+
-    |              INPUT CHANNELS INGESTION                  | -------► +---------------------------+
-    |  Ingest and aggregate data from available channhels    |        ~ | HISTORICAL DATA / STORAGE |
-    |           (email, live chat, etc.)                     |       |  +---------------------------+
-    +--------------------------------------------------------+       |
-                            |          | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |      
-                            ▼          ▼
-        +---------------------------------------------------+  -----------------------------------------|
-        |                DATA PROCESSING                    |                                           |
-        | (Text cleaning, tokenization, normalization, etc.)|                                           |
-        +---------------------------------------------------+                                           |
-                            |                                                                           |
-                            ▼                                                                           ▼
-        +-----------------------------------------+                                 +-----------------------------------------+
-        |           RULE - BASED CLASSIFIER       |                                 |             WORD EMBEDDINGS             |
-        |  SME-defined rules, regex patterns,     | ◄ ----------------------------- |  Entities that resemble the user-query  |
-        |     machine learning predictions        |                                 +-----------------------------------------+
-        +-----------------------------------------+                                 
-                            |     ▲             
-                            ▼     |-----------------------------------------|       +-----------------------------------------+
-    +------------------------------------------------------------+          |       |          SME FEEDBACK LOOP              |
-    |                  TICKET GENERATION                         |          |---- ► |    SME reviews flagged messages and     |
-    | (Predefined templates + dynamic fields like order ID)      |                  |        adjust rules accordingly         |
-    +------------------------------------------------------------+                  +-----------------------------------------+
-                            |
-                            ▼
-        +-------------------------------------------+
-        |           JIRA INTEGRATION LAYER          |
-        |    Deliver tickets via Jira REST API      |
-        |           to customer support             |
-        +-------------------------------------------+
+  +--------------------------------------------------------+
+  |              INPUT CHANNELS INGESTION                  | -------► +---------------------------+
+  |  Ingest and aggregate data from available channhels    |        ~ | HISTORICAL DATA / STORAGE |
+  |           (email, live chat, etc.)                     |       |  +---------------------------+
+  +--------------------------------------------------------+       |
+                          |          | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |      
+                          ▼          ▼
+      +---------------------------------------------------+  ------------------------------------|
+      |                DATA PROCESSING                    |                                      |
+      | (Text cleaning, tokenization, normalization, etc.)|                                      |
+      +---------------------------------------------------+                                      |
+                          |                                                                      |
+                          ▼                                                                      ▼
+      +-----------------------------------------+                            +-----------------------------------------+
+      |           RULE - BASED CLASSIFIER       |                            |             WORD EMBEDDINGS             |
+      |  SME-defined rules, regex patterns,     | ◄ ------------------------ |  Entities that resemble the user-query  |
+      |     machine learning predictions        |                            +-----------------------------------------+
+      +-----------------------------------------+                                 
+                          |     ▲             
+                          ▼     |-----------------------------------|       +-----------------------------------------+
+  +---------------------------------------------------------+       |       |          SME FEEDBACK LOOP              |
+  |                  TICKET GENERATION                      |       |---- ► |    SME reviews flagged messages and     |
+  | (Predefined templates + dynamic fields like order ID)   |               |        adjust rules accordingly         |
+  +---------------------------------------------------------+               +-----------------------------------------+
+                          |
+                          ▼
+      +-------------------------------------------+
+      |           JIRA INTEGRATION LAYER          |
+      |    Deliver tickets via Jira REST API      |
+      |           to customer support             |
+      +-------------------------------------------+
 
 
 ## QUESTIONS 
