@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/62c5ba01-e918-4658-8e4c-cebb8cb325dd" alt="Netguru-layoffs-logo" width="750"/>
+  <img src="https://github.com/user-attachments/assets/62c5ba01-e918-4658-8e4c-cebb8cb325dd" alt="Netguru-layoffs-logo" width="790"/>
 </p>
 
 # System Design: SME-Guided Customer Support Classification
@@ -65,9 +65,9 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
 
 ## FLOWCHART
     +--------------------------------------------------------+
-    |              INPUT CHANNELS INGESTION                  | -------► +---------------------------+
-    |  Ingest and aggregate data from available channhels    |        ~ | HISTORICAL DATA / STORAGE |
-    |           (email, live chat, etc.)                     |       |  +---------------------------+
+    |              INPUT CHANNELS INGESTION                  | ---------- ► +---------------------------+
+    |  Ingest and aggregate data from available channhels    |        ~ ~ ~ | HISTORICAL DATA / STORAGE |
+    |           (email, live chat, etc.)                     |       |      +---------------------------+
     +--------------------------------------------------------+       |
                             |          | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |      
                             ▼          ▼
@@ -83,11 +83,11 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
         |     machine learning predictions        |                      +-----------------------------------------+
         +-----------------------------------------+                                 
                             |     ▲             
-                            ▼     |---------------------------------|       +----------------------------------------+
-    +--------------------------------------------------------+      |       |           SME FEEDBACK LOOP            |
-    |                  TICKET GENERATION                     |      |---- ► |   SME reviews flagged messages and     |
-    | (Predefined templates + dynamic fields like order ID)  |              |       adjust rules accordingly         |
-    +--------------------------------------------------------+              +----------------------------------------+
+                            ▼     |--------------------------------|       +---------------------------------------+
+    +--------------------------------------------------------+     |       |          SME FEEDBACK LOOP            |
+    |                  TICKET GENERATION                     |     |---- ► |  SME reviews flagged messages and     |
+    | (Predefined templates + dynamic fields like order ID)  |             |      adjust rules accordingly         |
+    +--------------------------------------------------------+             +---------------------------------------+
                             |
                             ▼
         +-------------------------------------------+
@@ -97,7 +97,7 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
         +-------------------------------------------+
 
 
-## QUESTIONS 
+## QUESTIONS:
 ### What technologies would you use? 
 - **Backend**: Python 
 - **ML Framework**: scikit-learn, spaCy
@@ -117,7 +117,7 @@ Integrate with support systems like Jira via REST API to ensure tickets contain 
 - Add message queues to ensure robust data delivery during ingestion since the system handles multiple channels concurrently
 - Incorporate a load balancer to evenly distribute incoming traffic across the microservices preventing bottlenecks during peak usage
 
-### What questions would you ask the buisiness partner
+### What questions would you ask the buisiness partner?
 - A list of supported channels, along with their expected (and current) resolution time 
 - Past data for how SMEs handle cases, and how they dealt with more ambigous requests
 - What does the current infrastructure look like and what is the allocated budget and timeline for the project
