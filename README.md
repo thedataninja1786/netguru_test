@@ -16,7 +16,7 @@
 
 
 ## 2. DATA PROCESSING 
-Utilize SME past data to map customer queries to request categories.
+Utilize SME rules to map customer queries to request categories.
 Clean and normalize the data by applying lowercase conversion, stopword removal, and lemmatization to unify variations of the same word.
 Finally the clean data should be tokenized for mapping and rule-matching with the corresponding customer support team.
 Create detailed categorization of issue types with the following sample mapping structure.
