@@ -18,7 +18,7 @@
 ## 2. DATA PROCESSING 
 Utilize SME expertise to map customer queries to request categories.
 Clean and normalize the data by applying lowercase conversion, stopword removal, and lemmatization to unify variations of the same word.
-Afterwards the clean data should be tokenized for mapping and rule-matching with the corresponding customer support team.
+Next, the clean data should be tokenized for mapping and rule-matching with the corresponding customer support team.
 
     SUPPORT_CATEGORIES = {
         "order_tracking": {
